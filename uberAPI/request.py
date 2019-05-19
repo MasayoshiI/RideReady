@@ -4,14 +4,12 @@ from uber_rides.client import UberRidesClient
 
 class Request:
     """ Request class"""
-    def __init__(self, budget, ride_type, start_latitude, start_longitude, end_latitude, end_longitude, seat_count=1):
+    def __init__(self, budget, start_latitude, start_longitude, end_latitude, end_longitude, seat_count=1):
         """ Constructor for the Request """
         #config
         _conf = conf.local
         # param for estimate price 
         self.budget = budget
-        self.ride_type = ride_type
-        
         self.start_latitude = start_latitude
         self.start_longitude = start_longitude
         self.end_latitude = end_latitude
@@ -27,11 +25,11 @@ class Request:
         response = self.client.get_price_estimates(self.start_latitude, self.start_longitude, self.end_latitude, self.end_longitude, self.seat_count)
         prices = response.json.get('prices')
         # print(prices)
-        for ride in prices:
-            if ride["display_name"] == self.ride_type:
-                return ride["estimate"] 
-
-        return "Error"
+        # for ride in prices:
+        #     if ride["display_name"] == self.ride_type:
+        #         return ride["estimate"] 
+        return prices
+        # return "Error"
     
     def get_budget(self):
         """ returns the budget"""
@@ -41,13 +39,6 @@ class Request:
         """sets the new budget value for the object"""
         self.budget = budget
     
-    def get_ride_type(self):
-        """returns the ride type set"""
-        return self.ride_type
-    
-    def set_ride_type(self, ride_type):
-        """sets the new ride type value for the object"""
-        self.ride_type = ride_type
     
     def get_start_location(self):
         """returns the start location"""
@@ -76,8 +67,7 @@ class Request:
         self.seat_count = seat_count
 
 if __name__ == "__main__":
-    req = Request(10,"UberX", 42.3601, -71.0589, 42.255459, -71.002579)
+    req = Request(10, 42.3601, -71.0589, 42.255459, -71.002579)
     print(req.get_budget())
     print(req.get_estimate_price())
-    print(req.get_ride_type())
     

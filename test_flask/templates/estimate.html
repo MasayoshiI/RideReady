@@ -10,19 +10,19 @@
     </div>
     <div class="row">
         <div class="col-md-5 col-sm-5 wow fadeInUp" data-wow-delay="0.3s">
-            <form action="{{ url_for('get_input') }}" method="post">
-                <h3>Starting Address</h3>
-                <textarea name="starting_address" rows="2" cols="50" style=resize:none;></textarea>
-                <br>
-                <h3>Destination Address</h3>
-                <textarea name="destination_address" rows="2" cols="50" style=resize:none;></textarea>
-                <br>
-                <h3>Your budget (ex: 10 for $10)</h3>
-                <textarea name="budget" rows="1" cols="50" style=resize:none;></textarea>
-                <br>
-                <input type="submit" value="Ride Ready?">
-              </form>
+            <p>sa</p>
+            <label class="control-label">Starting Address</label>
+    <input id="autocomplete" placeholder="Enter starting address"
+      onFocus="geolocate()" type="text" class="form-control">
+      <br>
+  <label class="control-label">Destination Address</label>
+   <input id="autocomplete2" placeholder="Enter destination address"
+      onFocus="geolocate()" type="text" class="form-control">
+      <br>
+      
         </div>
+        <script src="/static/js/autofill.js"></script>
+        
         <div class="col-md-7 col-sm-7 wow fadeInUp" data-wow-delay="0.3s">
             <div id="googleMap" style="width:100%;height:300px;"></div>
 
@@ -127,6 +127,6 @@
             }
             </script>
             
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkNYRCiJ6o0qZxVTP0CPxF24DhzIf8sig&callback=myMap"></script>
+            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkNYRCiJ6o0qZxVTP0CPxF24DhzIf8sig&callback=myMap&libraries=places&callback=initAutocomplete"async defer></script>
             
 {% endblock content%}
