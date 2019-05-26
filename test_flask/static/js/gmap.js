@@ -1,3 +1,4 @@
+
 function initialize() {
   initMap();
   initAutocomplete();
@@ -8,6 +9,8 @@ function initMap() {
   var map = new google.maps.Map(document.getElementById('googleMap'), {
     zoom: 14,
     center: {lat: 42.3505, lng: -71.1054},
+    mapTypeControl: false,
+    streetViewControl: false,
     styles: [
       {elementType: 'geometry', stylers: [{color: '#242f3e'}]},
       {elementType: 'labels.text.stroke', stylers: [{color: '#242f3e'}]},
@@ -93,6 +96,7 @@ function initMap() {
 
   document.getElementById('submit').addEventListener('click', function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
+    sendRequest()
   });
 }
 
@@ -105,9 +109,10 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
     if (status === 'OK') {
       directionsDisplay.setDirections(response);
       var route = response.routes[0];
-      
+
     } else {
       window.alert('Directions request failed due to ' + status);
+      return;
     }
   });
 }
@@ -118,17 +123,11 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             /** @type {!HTMLInputElement} */(document.getElementById('start')),
             {types: ['geocode']});
 
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        start.addListener('place_changed');
         
          end = new google.maps.places.Autocomplete(
             /** @type {!HTMLInputElement} */(document.getElementById('end')),
             {types: ['geocode']});
 
-        // When the user selects an address from the dropdown, populate the address
-        // fields in the form.
-        end.addListener('place_changed');
       }
 
 
@@ -147,6 +146,53 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             });
             start.setBounds(circle.getBounds());
             end.setBounds(circle.getBounds());
-          });
-        }
+          });  
       }
+    }
+
+    function sendRequest() {
+      var geocoder = new google.maps.Geocoder();
+      var startingAddress = document.getElementById('start').value
+      var destinationAddress = document.getElementById('end').value;
+      var budget = document.getElementById('budget').value
+      var ridetype = document.getElementById('ride-type').value
+      var seatcount = document.getElementById('seat-count').value
+      
+      // Handle error cases
+      if (ridetype==="") {
+        window.alert('Please select your ride type');
+        return;
+      }
+      if (budget==="") {
+        window.alert('Please tell us your budget in a number');
+        return;
+      }
+      if (ridetype==="pool" && seatcount==="") {
+        window.alert('Please select your seat count for pool');
+        return;
+      }
+
+      var addresses = [startingAddress, destinationAddress]
+      // geocode = [starting, destionation]
+      var geocodes = []
+      // find geocode for both start and destination 
+      for (var i = 0; i < 2; i++) { 
+        geocoder.geocode({'address': addresses[i]}, function(results, status) {
+          if (status === 'OK') {
+            //[lat,long]
+            geocodes.push(results[0].geometry.location.toString().replace(/\(|\)/g, '').split(', '));
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+      console.log(geocodes);
+      console.log(budget);
+      console.log(ridetype);
+      console.log(seatcount);
+      
+
+    }
+
+    
+    
