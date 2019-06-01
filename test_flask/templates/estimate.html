@@ -42,15 +42,23 @@
         </div>
     </div>
     <div class="row" style="margin-top:10px;">
-        <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s"style=background-color:green;>
-            Uber
+        <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s";>
+            <h1>Uber</h1>
+            <p class="text-center" id="poolrate">pool</p>
+            <p class="text-center" id="xrate">x</p>
+            <p class="text-center" id="xlrate">xl</p>
         </div>
-        <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s" style=background-color:orange;>
-            LYFT
+        <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s";>
+            <h1>Lyft</h1>
+            <p class="text-center" id="poolrate">Line</p>
+            <p class="text-center" id="xrate">lyft</p>
+            <p class="text-center" id="xlrate">plus</p>
+            
         </div>
     </div>
-          <script src="/static/js/gmap.js"></script>
-            <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkNYRCiJ6o0qZxVTP0CPxF24DhzIf8sig&callback=myMap&libraries=places&callback=initialize"></script>
+        <script src="/static/js/liveRate.js"></script>
+        <script src="/static/js/gmap.js"></script>
+        <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkNYRCiJ6o0qZxVTP0CPxF24DhzIf8sig&callback=myMap&libraries=places&callback=initialize"></script>
             <!-- <script src="https://maps.googleapis.com/mmyMapaps/api/js?key=AIzaSyCkNYRCiJ6o0qZxVTP0CPxF24DhzIf8sig&libraries=places&callback=initialize"async defer></script> -->
             
 {% endblock content%}

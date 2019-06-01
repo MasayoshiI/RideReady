@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, jsonify
-import requests, sys
+import requests, sys, json
 app = Flask(__name__)
 
 @app.route('/')
@@ -29,6 +29,14 @@ def estimate():
     else:
         return render_template('estimate.html')
 
+
+@app.route('/postText', methods=['POST'])
+def live_rate():
+    pool = request.json['pool']
+    x = request.json['x']
+    xl = request.json['xl']
+    return_data = {"pool":pool, "x":x, "xl":xl}
+    return jsonify(ResultSet=json.dumps(return_data))
 
 # MAIN BELOW RUNS APP
 if __name__ == '__main__':
