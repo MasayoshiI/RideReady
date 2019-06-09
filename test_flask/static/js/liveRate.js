@@ -29,6 +29,7 @@ function liveRate(geocode,budget,ridetype,seatcount) {
             $("#xlrate").text(xlrate);
           }
       });
+      document.getElementById("rateTable").style.display = "block";
     // var textData = JSON.stringify({
     //     "pool":"Pool Rate","x":"X Rate","xl":"XL Rate"
     // });
@@ -48,5 +49,5 @@ function liveRate(geocode,budget,ridetype,seatcount) {
     //         $("#xlrate").text(xl);
     //       }
     //   });
-      return false;
+    return false;
 }

@@ -53,7 +53,10 @@ def live_rate():
 
     ride_rates = ride_request.get_estimate_price()
     
+    # Initiate returning data
     return_data = {}
+
+    # iterate to find uber rates here
     for rate in ride_rates:
         if rate["display_name"] == "UberPool" or "UberX" or "UberXL":
             return_data[rate["display_name"]]  = rate["display_name"] + " Rate:\t" +str(rate["high_estimate"])
