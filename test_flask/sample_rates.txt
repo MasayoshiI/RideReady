@@ -1,0 +1,16 @@
+[
+    {'localized_display_name': 'UberPool', 'distance': 10.17, 'display_name': 'UberPool', 'product_id': '997acbb5-e102-41e1-b155-9df7de0a73f2', 
+        'high_estimate': 40.0, 'low_estimate': 35.0, 'duration': 1260, 'estimate': '$35-39', 'currency_code': 'USD'}, 
+    {'localized_display_name': 'UberX', 'distance': 10.17, 'display_name': 'UberX', 'product_id': '55c66225-fbe7-4fd5-9072-eab1ece5e23e', 
+        'high_estimate': 41.0, 'low_estimate': 37.0, 'duration': 1260, 'estimate': '$37-41', 'currency_code': 'USD'}, 
+    {'localized_display_name': 'Black SUV', 'distance': 10.17, 'display_name': 'Black SUV', 'product_id': '6d318bcc-22a3-4af6-bddd-b409bfce1546', 
+        'high_estimate': 71.0, 'low_estimate': 65.0, 'duration': 1260, 'estimate': '$65-71', 'currency_code': 'USD'}, 
+    {'localized_display_name': 'UberXL', 'distance': 10.17, 'display_name': 'UberXL', 'product_id': '6f72dfc5-27f1-42e8-84db-ccc7a75f6969', 
+        'high_estimate': 74.0, 'low_estimate': 68.0, 'duration': 1260, 'estimate': '$68-74', 'currency_code': 'USD'}, 
+    {'localized_display_name': 'Black', 'distance': 10.17, 'display_name': 'Black', 'product_id': '6c84fd89-3f11-4782-9b50-97c468b19529', 
+        'high_estimate': 56.0, 'low_estimate': 51.0, 'duration': 1260, 'estimate': '$51-56', 'currency_code': 'USD'}, 
+    {'localized_display_name': 'WAV', 'distance': 10.17, 'display_name': 'WAV', 'product_id': '9a0e7b09-b92b-4c41-9779-2ad22b4d779d', 
+        'high_estimate': 41.0, 'low_estimate': 37.0, 'duration': 1260, 'estimate': '$37-41', 'currency_code': 'USD'}, 
+    {'  ': 'Taxi', 'distance': 10.17, 'display_name': 'Taxi', 'product_id': '8cf7e821-f0d3-49c6-8eba-e679c0ebcf6a', 
+        'high_estimate': None, 'low_estimate': None, 'duration': 1260, 'estimate': 'Metered', 'currency_code': None}
+]

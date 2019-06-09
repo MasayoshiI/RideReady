@@ -97,6 +97,7 @@ function initMap() {
   document.getElementById('submit').addEventListener('click', function() {
     calculateAndDisplayRoute(directionsService, directionsDisplay);
     sendRequest()
+      
   });
 }
 
@@ -172,26 +173,45 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         return;
       }
 
-      var addresses = [startingAddress, destinationAddress]
+      var addresses = [startingAddress, destinationAddress];
       // geocode = [starting, destionation]
-      var geocodes = []
+      // var geocodes = [];
+      var geocodes = [];
       // find geocode for both start and destination 
-      for (var i = 0; i < 2; i++) { 
-        geocoder.geocode({'address': addresses[i]}, function(results, status) {
-          if (status === 'OK') {
-            //[lat,long]
-            geocodes.push(results[0].geometry.location.toString().replace(/\(|\)/g, '').split(', '));
-          } else {
-            alert('Geocode was not successful for the following reason: ' + status);
-          }
-        });
-      }
-      console.log(geocodes);
-      console.log(budget);
-      console.log(ridetype);
-      console.log(seatcount);
       
+      // for (var i = 0; i < 2; i++) {
+      //   geocoder.geocode({'address': addresses[i]}, function(results, status) {
+      //     if (status === 'OK') {
+      //       //[lat,long]
+      //       geocodes.push(results[0].geometry.location.toString().replace(/\(|\)/g, '').split(', '));
+      //     } else {
+      //       alert('Geocode was not successful for the following reason: ' + status);
+      //     }
+      //   });
+      // }
 
+      //   geocoder.geocode({'address': addresses[i]}, function(results, status) {
+      //     if (status === 'OK') {
+      //       //[lat,long]
+      //       geocodes.push(results[0].geometry.location.toString().replace(/\(|\)/g, '').split(', '));
+      //     } else {
+      //       alert('Geocode was not successful for the following reason: ' + status);
+      //     }
+      //   });
+      var processed = 0;
+      $.each(addresses, function(i,v) {
+        geocoder.geocode({'address':v}, function(results, status) {
+           if (status === 'OK') {
+             geocodes[i] = results[0].geometry.location.toString().replace(/\(|\)/g, '').split(', ');
+            }
+            if (++processed >= geocodes.length) {
+               // code goes here for processing after all locations received
+               liveRate(geocodes,budget,ridetype,seatcount);
+            }
+        });
+     });
+    
+      
     }
 
     

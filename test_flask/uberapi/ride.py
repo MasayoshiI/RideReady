@@ -1,12 +1,12 @@
 import conf
-from request import Request
+from uber_request import UberRequest
 from uber_rides.session import Session
 from uber_rides.client import UberRidesClient
 
-class Ride(Request):
+class Ride(UberRequest):
     """ride class finds/cancels ride bades on the request class"""
     def __init__(self, budget, ride_type, start_latitude, start_longitude, end_latitude, end_longitude, seat_count):
-        Request.__init__(self, budget, ride_type, start_latitude, start_longitude, end_latitude, end_longitude, seat_count)
+        UberRequest.__init__(self, budget, ride_type, start_latitude, start_longitude, end_latitude, end_longitude, seat_count)
         self.readiness = self.is_ride_ready()
         self.ordered = False
 
@@ -59,9 +59,9 @@ class Ride(Request):
         # ride = response.json
         pass
 if __name__ == "__main__":
-    req = Request(10,"UberX", 42.3601, -71.0589, 42.255459, -71.002579)
+    req = UberRequest(10,"UberX", 42.3601, -71.0589, 42.255459, -71.002579)
     print(req.get_budget())
     print(req.get_estimate_price())
-    print(req.get_ride_type())
+    # print(req.get_ride_type())
     # ride = Ride(req)
     
