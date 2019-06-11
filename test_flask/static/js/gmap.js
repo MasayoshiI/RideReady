@@ -168,7 +168,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
         window.alert('Please tell us your budget in a number');
         return;
       }
-      if (ridetype==="pool" && seatcount==="") {
+      if (ridetype==="UberPool" && seatcount==="") {
         window.alert('Please select your seat count for pool');
         return;
       }
@@ -207,10 +207,13 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             if (++processed >= geocodes.length) {
                // code goes here for processing after all locations received
                liveRate(geocodes,budget,ridetype,seatcount);
+               
             }
         });
      });
     
+     // Repeat liveRate function 30 sec each
+    setTimeout(sendRequest, 30000);
     
       
     }

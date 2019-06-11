@@ -21,9 +21,9 @@
             <br>
             <select id="ride-type" style="margin-bottom:25px;">
                 <option value="" selected disabled hidden>Choose your ride type</option>
-                <option value="pool">Uber Pool / Lyft Line</option>
-                <option value="x">UberX / Lyft</option>
-                <option value="xl">UberXL / Lyft Plus</option>
+                <option value="UberPool">Uber Pool / Lyft Line</option>
+                <option value="UberX">UberX / Lyft</option>
+                <option value="UberXL">UberXL / Lyft Plus</option>
             </select>
             <select id="seat-count" style="margin-bottom:25px;">
                     <option value="" selected disabled hidden>Choose your seat count (only for pool / line)</option>
@@ -42,20 +42,28 @@
         </div>
     </div>
     <div class="row" id="rateTable" style="margin-top:10px;display:none;">
+            <div class="col-md-12 col-sm-12 wow fadeInUp" data-wow-delay="0.3s";>
+                <h1>Uber Rates</h1>
+                <p class="text-center" id="poolrate"></p>
+                <p class="text-center" id="xrate"></p>
+                <p class="text-center" id="xlrate"></p>
+            </div>
+    </div>
+    <!-- <div class="row" id="rateTable" style="margin-top:10px;display:none;">
         <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s";>
-            <h1>Uber</h1>
-            <p class="text-center" id="poolrate">pool</p>
-            <p class="text-center" id="xrate">x</p>
-            <p class="text-center" id="xlrate">xl</p>
+            <h1>Uber Rates</h1>
+            <p class="text-center" id="poolrate"></p>
+            <p class="text-center" id="xrate"></p>
+            <p class="text-center" id="xlrate"></p>
         </div>
         <div class="col-md-6 col-sm-6 wow fadeInUp" data-wow-delay="0.3s";>
-            <h1>Lyft</h1>
-            <p class="text-center" id="poolrate">Line</p>
-            <p class="text-center" id="xrate">lyft</p>
-            <p class="text-center" id="xlrate">plus</p>
+            <h1>Lyft Rates</h1>
+            <p class="text-center" id="poolrate"></p>
+            <p class="text-center" id="xrate"></p>
+            <p class="text-center" id="xlrate"></p>
             
         </div>
-    </div>
+    </div> -->
         <script src="/static/js/liveRate.js"></script>
         <script src="/static/js/gmap.js"></script>
         <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCkNYRCiJ6o0qZxVTP0CPxF24DhzIf8sig&callback=myMap&libraries=places&callback=initialize"></script>

@@ -27,9 +27,8 @@ class UberRequest:
         # print(prices)
         # for ride in prices:
         #     if ride["display_name"] == self.ride_type:
-        #         return ride["estimate"] 
+        #         return ride["estimate"]
         return prices
-        # return "Error"
     
     def get_budget(self):
         """ returns the budget"""

@@ -11,28 +11,6 @@ def index():
     return render_template('estimate.html')
 
 
-# @app.route("/function_route", methods=["GET", "POST"])
-# # def estimate():
-    
-# #     if request.method == "POST":
-# #         geolocation = {}    # empty dict to store data
-# #         geolocation['lat'] = request.json['lat']
-# #         geolocation['lng'] = request.json['lng']
-
-#         # do whatever you want with the data here e.g look up in database or something
-#         # if you want to print to console
-
-#         print(geolocation, file=sys.stderr)
-
-#         # then return something back to frontend on success
-#         # this returns back received data and you should see it in browser console
-#         # because of the console.log() in the script.
-
-#         return jsonify(geolocation)
-    
-#     else:
-#         return render_template('estimate.html')
-
 
 @app.route('/postText', methods=['POST'])
 def live_rate():
@@ -58,16 +36,18 @@ def live_rate():
 
     # iterate to find uber rates here
     for rate in ride_rates:
-        if rate["display_name"] == "UberPool" or "UberX" or "UberXL":
-            return_data[rate["display_name"]]  = rate["display_name"] + " Rate:\t" +str(rate["high_estimate"])
-    
+        if rate["display_name"] in ("UberPool", "UberX", "UberXL"):
+            return_data[rate["display_name"]]  = rate["display_name"] + ":\t" +str(rate["high_estimate"])
+        # if rate["display_name"] == ride_type:
+        #     return_data["cost"] = ride_rates["display_name"]["high_estimate"] 
     # return_data = {
     #     "start_lat":ride_request.start_lat,"start_long":start_long,
     #     "dest_lat":dest_lat,"dest_long":dest_long, 
     #     "budget":budget, "ridetype":ride_type, "seatcount":seat_count}
+    # return jsonify(ResultSet=json.dumps(return_data))
     return jsonify(ResultSet=json.dumps(return_data))
     
 
 # MAIN BELOW RUNS APP
 if __name__ == '__main__':
-   app.run(debug = True, port=8080)
+    app.run(debug = True, port=8080)

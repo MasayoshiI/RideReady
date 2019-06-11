@@ -13,6 +13,7 @@ function liveRate(geocode,budget,ridetype,seatcount) {
         "dest_lat":geocode[1][0],"dest_long":geocode[1][1],
         "budget":budget,"ridetype":ridetype,"seatcount":seatcount
     });
+    
     $.ajax({
         type:'POST',
         url:'/postText',
@@ -23,13 +24,24 @@ function liveRate(geocode,budget,ridetype,seatcount) {
             var poolrate = result.UberPool;
             var xrate = result.UberX;
             var xlrate = result.UberXL;
+            var cost = result.cost;
             // console.log(result)
             $("#poolrate").text(poolrate);
             $("#xrate").text(xrate);
             $("#xlrate").text(xlrate);
+            console.log(result)
+            // console.log(cost);
+            // if(budget <= cost) {
+            //     alert("The fare is under the budget!");
+            // }
           }
       });
       document.getElementById("rateTable").style.display = "block";
+      
+      
+    // Repeat liveRate function 30 sec each
+    //   setTimeout(liveRate(geocode,budget,ridetype,seatcount), 30000);
+
     // var textData = JSON.stringify({
     //     "pool":"Pool Rate","x":"X Rate","xl":"XL Rate"
     // });
