@@ -17,7 +17,7 @@ class UberRequest:
         self.seat_count = seat_count
         
         #start the session here
-        self.session = Session(server_token=_conf["Server Token"])
+        self.session = Session(server_token=_conf["Server_Token"])
         self.client = UberRidesClient(self.session)
     
     def get_estimate_price(self):
