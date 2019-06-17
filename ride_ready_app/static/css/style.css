@@ -131,13 +131,13 @@ a:hover, a:active, a:focus {
   padding-bottom: 0px;
 }
 
-#about, #gallery {
+#about, #estimator {
   padding-top: 120px;
   padding-bottom: 120px;
   position: relative;
 }
 
-#gallery, footer {
+#estimator, footer {
   text-align: center;
 }
 
@@ -375,14 +375,14 @@ a:hover, a:active, a:focus {
 }
 
 /*---------------------------------------
-    Galllery section              
+    Estimator section              
 -----------------------------------------*/
 
-#gallery {
+#estimator {
   background: #ffffff;
 }
 
-#gallery .gallery-thumb {
+#estimator .estimator-thumb {
   background-color: #ffffff;
   box-shadow: 0px 1px 2px 0px rgba(90, 91, 95, 0.15);
   cursor: pointer;
@@ -393,12 +393,12 @@ a:hover, a:active, a:focus {
   transition: all 0.4s ease-in-out;
 }
 
-#gallery .gallery-thumb:hover {
+#estimator .estimator-thumb:hover {
   box-shadow: 0px 16px 22px 0px rgba(90, 91, 95, 0.3);
   top: -5px;
 }
 
-#gallery .gallery-thumb img {
+#estimator .estimator-thumb img {
   border-top-right-radius: 2px;
   border-bottom-left-radius: 2px;
   width: 100%;
@@ -513,17 +513,17 @@ footer a{
     }
   */
   
-  #gallery h1{
+  #estimator h1{
     font-size: 13px;
   }
 
-  #gallery small{
+  #estimator small{
     font-size: 10px;
   }
-  #gallery a{
+  #estimator a{
     font-size: 6px;
   }
-  #gallery .section-title h1{
+  #estimator .section-title h1{
     font-size: 2rem;
     line-height: 3rem;
     letter-spacing: 12px;
@@ -546,14 +546,14 @@ footer a{
   #about .team-thumb {
     margin-top: 32px;
   }
-  #gallery h1{
+  #estimator h1{
     font-size: 12px;
   }
 
-  #gallery small{
+  #estimator small{
     font-size: 0px;
   }
-  #gallery a{
+  #estimator a{
     font-size: 10px;
   }
 
@@ -565,14 +565,14 @@ footer a{
   #home, .overlay {
     height: 70vh;
   }
-  #gallery h1{
+  #estimator h1{
     font-size: 9px;
   }
 
-  #gallery small{
+  #estimator small{
     font-size: 0px;
   }
-  #gallery a{
+  #estimator a{
     font-size: 8px;
   }
   #survey h4 {
@@ -591,7 +591,7 @@ footer a{
   p {
     font-size: 18px;
   }
-  #gallery a {
+  #estimator a {
     font-size: 12px;
   }
 
@@ -600,7 +600,7 @@ footer a{
   }
   #home,
   #about,
-  #gallery,
+  #estimator,
   #contact {
     padding-top: 100px;
     padding-bottom: 80px;

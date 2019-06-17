@@ -36,10 +36,13 @@ def live_rate():
 
     # iterate to find uber rates here
     for rate in ride_rates:
+        # add pool, x, xl in json
         if rate["display_name"] in ("UberPool", "UberX", "UberXL"):
             return_data[rate["display_name"]]  = rate["display_name"] + ":\t" +str(rate["high_estimate"])
-        # if rate["display_name"] == ride_type:
-        #     return_data["cost"] = ride_rates["display_name"]["high_estimate"] 
+        # set the cost to compare against budget in liveRate
+        if rate["display_name"] == ride_type:
+            return_data["cost"] = rate["high_estimate"]
+        
     # return_data = {
     #     "start_lat":ride_request.start_lat,"start_long":start_long,
     #     "dest_lat":dest_lat,"dest_long":dest_long, 

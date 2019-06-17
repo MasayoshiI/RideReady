@@ -13,7 +13,7 @@ function liveRate(geocode,budget,ridetype,seatcount) {
         "dest_lat":geocode[1][0],"dest_long":geocode[1][1],
         "budget":budget,"ridetype":ridetype,"seatcount":seatcount
     });
-    
+    console.log(ridetype);
     $.ajax({
         type:'POST',
         url:'/postText',
@@ -30,10 +30,23 @@ function liveRate(geocode,budget,ridetype,seatcount) {
             $("#xrate").text(xrate);
             $("#xlrate").text(xlrate);
             console.log(result)
-            // console.log(cost);
-            // if(budget <= cost) {
-            //     alert("The fare is under the budget!");
-            // }
+            
+            console.log(cost);
+            // budget is over the cost — ride is ready
+            if(budget >= cost) {
+                // console.log("cost under budget")
+                console.log(isCompleted);
+                isCompleted = true;
+                console.log(isCompleted);
+                alert("The fare is under the budget!");
+                stopLiveTable()
+            }
+            // if the budget is too low
+            if(budget < (cost * 0.6)) {
+                requireNewBudget = true;
+                alert("The given budget is less than 60% of the estimate cost, try again with the new budget!");
+                stopLiveTable()
+            }
           }
       });
       document.getElementById("rateTable").style.display = "block";

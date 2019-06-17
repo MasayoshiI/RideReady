@@ -1,2 +1,3 @@
 /uberapi/conf.py\
-/lyft/conf.py
+/lyft
+.DS_Store

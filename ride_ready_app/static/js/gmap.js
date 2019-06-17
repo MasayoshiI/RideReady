@@ -1,4 +1,5 @@
-
+var isCompleted = false;
+var requireNewBudget = false;
 function initialize() {
   initMap();
   initAutocomplete();
@@ -199,6 +200,7 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
       //     }
       //   });
       var processed = 0;
+      
       $.each(addresses, function(i,v) {
         geocoder.geocode({'address':v}, function(results, status) {
            if (status === 'OK') {
@@ -206,17 +208,20 @@ function calculateAndDisplayRoute(directionsService, directionsDisplay) {
             }
             if (++processed >= geocodes.length) {
                // code goes here for processing after all locations received
-               liveRate(geocodes,budget,ridetype,seatcount);
-               
+              liveRate(geocodes,budget,ridetype,seatcount);
             }
         });
      });
     
-     // Repeat liveRate function 30 sec each
-    setTimeout(sendRequest, 30000);
+     // Repeat liveRate function 30 sec after the function is done executing
+    livetable = setTimeout(sendRequest, 30000);
     
-      
+    console.log(isCompleted);
     }
 
+
+    function stopLiveTable() { 
+      clearTimeout(livetable); 
+    } 
     
     
